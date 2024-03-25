@@ -1,5 +1,6 @@
 import * as React from "react";
 import { Box } from "@mui/material";
+import TextSection from "./TextSection";
 
 const BodySection = () => {
     return (
@@ -12,7 +13,9 @@ const BodySection = () => {
                     backgroundAttachment: "fixed",
                     backgroundSize: "cover",
                     height: "100vh",
-                }}></div>
+                }}>
+                    <TextSection/>
+                </div>
         </Box>
     );
 };
