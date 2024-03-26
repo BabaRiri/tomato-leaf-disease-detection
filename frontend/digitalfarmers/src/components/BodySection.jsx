@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Box } from "@mui/material";
 import TextSection from "./TextSection";
+import UploadSection from "./UploadSection";
 
 const BodySection = () => {
     return (
@@ -15,6 +16,7 @@ const BodySection = () => {
                     height: "100vh",
                 }}>
                     <TextSection/>
+                    <UploadSection/>
                 </div>
         </Box>
     );

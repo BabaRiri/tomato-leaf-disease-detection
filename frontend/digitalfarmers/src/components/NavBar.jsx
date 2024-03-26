@@ -12,7 +12,7 @@ const NavBar = () => {
                         color: "#e34234",
                     }}
                 />
-                <Typography varint="h5">
+                <Typography variant="h5">
                     Digital
                     <br />
                     Farmers
