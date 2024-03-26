@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
     Typography,
     Box,
@@ -23,7 +24,43 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const UploadSection = () => {
-    const handleImage = () => {};
+    const [selectedImage, setSelectedImage] = React.useState(null);
+    const [result, setResult] = React.useState(null);
+    const [isImageSelected, setIsImageSelected] = React.useState(false);
+    const [isResponseReceived, setIsResponseReceived] = React.useState(false);
+
+    const handleImage = (e) => {
+        const selectedImage = e.target.files[0];
+        setSelectedImage(selectedImage);
+        setIsImageSelected(true);
+        setResult(null);
+        setIsResponseReceived(false);
+    };
+
+    const handleSubmit = async () => {
+        if (!selectedImage) {
+            alert("Please select an image first!");
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append("file", selectedImage);
+
+        try {
+            const response = await fetch("http://localhost:8000/predict", {
+                method: "POST",
+                body: formData,
+            });
+
+            const resultData = await response.json();
+            setResult(resultData);
+            setIsResponseReceived(true);
+            console.log("Response:", resultData);
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+
     return (
         <Box
             sx={{
@@ -63,13 +100,18 @@ const UploadSection = () => {
                         role={undefined}
                         variant="contained"
                         tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}>
-                        Upload file
-                        <VisuallyHiddenInput
-                            type="file"
-                            name="file"
-                            onChange={handleImage}
-                        />
+                        startIcon={<CloudUploadIcon />}
+                        onClick={isImageSelected ? handleSubmit : null}>
+                        {isImageSelected ? "Submit" : "Upload File"}
+
+                        {!isImageSelected && (
+                            <VisuallyHiddenInput
+                                type="file"
+                                name="file"
+                                onChange={handleImage}
+                                accept="image/jpeg, image/png, image/jpg"
+                            />
+                        )}
                     </Button>
                 </CardActions>
             </Card>
