@@ -61,61 +61,77 @@ const UploadSection = () => {
         }
     };
 
+    if (isResponseReceived) {
+        return <Box>UploadedCard</Box>;
+    }
+
     return (
-        <Box
-            sx={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: 5,
-            }}>
-            <Card
+        <>
+            <Box
                 sx={{
-                    minWidth: 275,
-                    width: 20,
                     display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
                     justifyContent: "center",
-                    textAlign: "center",
-                    paddingBottom: 3,
-                    backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    marginTop: 5,
                 }}>
-                <CardContent>
-                    <AddPhotoAlternateIcon
-                        sx={{ fontSize: 80, color: "#273339" }}
-                    />
-                    <Typography
-                        sx={{ fontSize: 14 }}
-                        color="text.secondary"
-                        gutterBottom>
-                        Choose an image of a <b>Tomato Leaf</b> you would like
-                        to analyse.
-                    </Typography>
-                </CardContent>
-
-                <CardActions>
-                    <Button
-                        sx={{ backgroundColor: "#273339" }}
-                        component="label"
-                        role={undefined}
-                        variant="contained"
-                        tabIndex={-1}
-                        startIcon={<CloudUploadIcon />}
-                        onClick={isImageSelected ? handleSubmit : null}>
-                        {isImageSelected ? "Submit" : "Upload File"}
-
-                        {!isImageSelected && (
-                            <VisuallyHiddenInput
-                                type="file"
-                                name="file"
-                                onChange={handleImage}
-                                accept="image/jpeg, image/png, image/jpg"
+                <Card
+                    sx={{
+                        minWidth: 275,
+                        width: 20,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        textAlign: "center",
+                        paddingBottom: 3,
+                        backgroundColor: "rgba(255, 255, 255, 0.5)",
+                    }}>
+                    <CardContent>
+                        {isImageSelected ? (
+                            <img
+                                src={URL.createObjectURL(selectedImage)}
+                                alt="uploaded image"
+                                style={{ maxWidth: "100%", maxHeight: "100%" }}
                             />
+                        ) : (
+                            <>
+                                <AddPhotoAlternateIcon
+                                    sx={{ fontSize: 80, color: "#273339" }}
+                                />
+                                <Typography
+                                    sx={{ fontSize: 14 }}
+                                    color="text.secondary"
+                                    gutterBottom>
+                                    Choose an image of a <b>Tomato Leaf</b> you
+                                    would like to analyse.
+                                </Typography>
+                            </>
                         )}
-                    </Button>
-                </CardActions>
-            </Card>
-        </Box>
+                    </CardContent>
+
+                    <CardActions>
+                        <Button
+                            sx={{ backgroundColor: "#273339" }}
+                            component="label"
+                            role={undefined}
+                            variant="contained"
+                            tabIndex={-1}
+                            startIcon={<CloudUploadIcon />}
+                            onClick={isImageSelected ? handleSubmit : null}>
+                            {isImageSelected ? "Submit" : "Upload File"}
+
+                            {!isImageSelected && (
+                                <VisuallyHiddenInput
+                                    type="file"
+                                    name="file"
+                                    onChange={handleImage}
+                                    accept="image/jpeg, image/png, image/jpg"
+                                />
+                            )}
+                        </Button>
+                    </CardActions>
+                </Card>
+            </Box>
+        </>
     );
 };
 
