@@ -120,7 +120,7 @@ const UploadSection = () => {
                         </>
                     </CardContent>
                     <CardActions>
-                        <Button variant="outlined" color="success">
+                        <Button variant="outlined" color="success" >
                             Learn More
                         </Button>
                         <Button
@@ -145,7 +145,7 @@ const UploadSection = () => {
 
     return (
         <>
-            <Container sx={{ maxwidth: "sm", paddingTop: "70px" }}>
+            <Container sx={{ maxwidth: "sm", paddingTop: "30px" }}>
                 <Typography
                     variant="h2"
                     align="center"
@@ -212,7 +212,12 @@ const UploadSection = () => {
 
                     <CardActions>
                         <Button
-                            sx={{ backgroundColor: "#273339" }}
+                            sx={{
+                                backgroundColor: "#273339",
+                                "&:hover": {
+                                    backgroundColor: "#E34234",
+                                },
+                            }}
                             component="label"
                             role={undefined}
                             variant="contained"

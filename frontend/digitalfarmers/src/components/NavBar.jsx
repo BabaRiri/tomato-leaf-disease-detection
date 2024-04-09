@@ -1,24 +1,85 @@
 import CircleIcon from "@mui/icons-material/Circle";
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
 
 const NavBar = () => {
     return (
-        <AppBar sx={{ position: "relative", backgroundColor: "#273339" }}>
-            <Toolbar>
-                <CircleIcon
+        <Box sx={{ flexGrow: 1 }}>
+            <AppBar sx={{ position: "relative", backgroundColor: "#273339", paddingLeft: "75px", paddingRight: "75px" }}>
+                <Toolbar >
+                    <>
+                        <CircleIcon
+                            sx={{
+                                margin: 2,
+                                fontSize: 50,
+                                color: "#e34234",
+                            }}
+                        />
+
+                        {/*<img
+                    src={`${process.env.PUBLIC_URL}/img/tomatologo.png`}
+                    alt="Logo"
                     sx={{
-                        margin: 2,
-                        fontSize: 50,
-                        color: "#e34234",
+                        width: "10%",
                     }}
-                />
-                <Typography variant="h5">
-                    Digital
-                    <br />
-                    Farmers
-                </Typography>
-            </Toolbar>
-        </AppBar>
+                />*/}
+                        <Typography
+                            sx={{
+                                fontSize: 16,
+                                fontFamily: "Courier Prime",
+                                component: "div",
+                                flexGrow: 1,
+                            }}>
+                            Digital
+                            <br />
+                            Farmers
+                        </Typography>
+                    </>
+                    <a
+                        href="http://localhost:3000/"
+                        target="_self"
+                        rel="noopener noreferrer">
+                        <Button
+                            sx={{
+                                variant: "text",
+                                fontSize: 16,
+                                color: "white",
+                                "&:hover": {
+                                    color: "#9BD2A5",
+                                },
+                            }}>
+                            Home
+                        </Button>
+                    </a>
+                    <a
+                        href="https://colossal-seed-831.notion.site/Digital-Farmers-Harvesting-Insights-to-Tackle-Leaf-Diseases-e78b023b99d84863bfa487a362138d6e"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Button
+                            sx={{
+                                variant: "text",
+                                fontSize: 16,
+                                color: "white",
+                                "&:hover": {
+                                    color: "#9BD2A5",
+                                },
+                            }}>
+                            Development
+                        </Button>
+                    </a>
+                    <Button
+                        sx={{
+                            variant: "text",
+                            fontSize: 16,
+                            color: "white",
+                            "&:hover": {
+                                color: "#9BD2A5",
+                            },
+                        }}>
+                        About Us
+                    </Button>
+                </Toolbar>
+            </AppBar>
+        </Box>
     );
 };
 
