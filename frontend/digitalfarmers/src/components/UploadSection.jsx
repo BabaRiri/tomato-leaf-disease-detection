@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     Typography,
     Box,
@@ -25,10 +25,11 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const UploadSection = () => {
-    const [selectedImage, setSelectedImage] = React.useState(null);
-    const [result, setResult] = React.useState(null);
-    const [isImageSelected, setIsImageSelected] = React.useState(false);
-    const [isResponseReceived, setIsResponseReceived] = React.useState(false);
+    const [selectedImage, setSelectedImage] = useState(null);
+    const [result, setResult] = useState(null);
+    const [isImageSelected, setIsImageSelected] = useState(false);
+    const [isResponseReceived, setIsResponseReceived] = useState(false);
+    const [learnMore, setLearnMore] = useState(null);
 
     const handleImage = (e) => {
         const selectedImage = e.target.files[0];
@@ -52,9 +53,11 @@ const UploadSection = () => {
             });
 
             const resultData = await response.json();
+            const label = resultData.class;
+            console.log("Response: ", resultData);
             setResult(resultData);
+            setLearnMore(label);
             setIsResponseReceived(true);
-            console.log("Response:", resultData);
         } catch (error) {
             console.error("Error:", error);
         }
@@ -65,6 +68,66 @@ const UploadSection = () => {
         setResult(null);
         setIsImageSelected(false);
         setIsResponseReceived(false);
+        setLearnMore(null);
+    };
+
+    const showLearnMore = () => {
+        let learnMoreValue = learnMore
+            .replace("Tomato___", "")
+            .replace(/_/g, " ");
+        console.log("Label: ", learnMore)
+
+        if (learnMoreValue === "Bacterial spot") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/disease-guides/tomatoes/bacterial-spot.html",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Early blight") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/disease-guides/tomatoes/early-blight.html",
+                "_blank"
+            );
+        } else if (learnMoreValue === "healthy") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/tomato/completo/completo-growing-tips-april-2020.html",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Late blight") {
+            window.open(
+                "https://extension.wvu.edu/lawn-gardening-pests/plant-disease/fruit-vegetable-diseases/late-blight-tomatoes#:~:text=What%20is%20late%20blight%3F,weeds%20botanically%20related%20to%20tomatoes.",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Leaf Mold") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/disease-guides/tomatoes/leaf-mold.html",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Septoria leaf spot") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/disease-guides/tomatoes/septoria-leaf-spot.html",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Spider mites Two-spotted spider mite") {
+            window.open(
+                "https://ag.umass.edu/vegetable/fact-sheets/two-spotted-spider-mite",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Target Spot") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/disease-guides/tomatoes/target-spot.html",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Tomato mosaic virus") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/disease-guides/tomatoes/tomato-mosaic-syn-tobacco-mosaic.html",
+                "_blank"
+            );
+        } else if (learnMoreValue === "Tomato Yellow Leaf Curl Virus") {
+            window.open(
+                "https://www.vegetables.bayer.com/gb/en-uk/knowledge-centre/disease-guides/tomatoes/tomato-yellow-leaf-curl.html",
+                "_blank"
+            );
+        }
     };
 
     if (isResponseReceived) {
@@ -120,7 +183,10 @@ const UploadSection = () => {
                         </>
                     </CardContent>
                     <CardActions>
-                        <Button variant="outlined" color="success" >
+                        <Button
+                            variant="outlined"
+                            color="success"
+                            onClick={showLearnMore}>
                             Learn More
                         </Button>
                         <Button

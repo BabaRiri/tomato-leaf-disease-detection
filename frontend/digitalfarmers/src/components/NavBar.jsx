@@ -4,8 +4,14 @@ import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
 const NavBar = () => {
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar sx={{ position: "relative", backgroundColor: "#273339", paddingLeft: "75px", paddingRight: "75px" }}>
-                <Toolbar >
+            <AppBar
+                sx={{
+                    position: "relative",
+                    backgroundColor: "#273339",
+                    paddingLeft: "75px",
+                    paddingRight: "75px",
+                }}>
+                <Toolbar>
                     <>
                         <CircleIcon
                             sx={{
@@ -19,7 +25,8 @@ const NavBar = () => {
                     src={`${process.env.PUBLIC_URL}/img/tomatologo.png`}
                     alt="Logo"
                     sx={{
-                        width: "10%",
+                        width: "100px",
+                        height: "auto"
                     }}
                 />*/}
                         <Typography
@@ -66,17 +73,22 @@ const NavBar = () => {
                             Development
                         </Button>
                     </a>
-                    <Button
-                        sx={{
-                            variant: "text",
-                            fontSize: 16,
-                            color: "white",
-                            "&:hover": {
-                                color: "#9BD2A5",
-                            },
-                        }}>
-                        About Us
-                    </Button>
+                    <a
+                        href="https://github.com/BabaRiri"
+                        target="_blank"
+                        rel="noopener noreferrer">
+                        <Button
+                            sx={{
+                                variant: "text",
+                                fontSize: 16,
+                                color: "white",
+                                "&:hover": {
+                                    color: "#9BD2A5",
+                                },
+                            }}>
+                            Contact
+                        </Button>
+                    </a>
                 </Toolbar>
             </AppBar>
         </Box>
