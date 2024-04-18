@@ -91,12 +91,14 @@ const UploadSection = () => {
         conditions,
         control
     ) => {
+        let imageNumbers = [1, 2, 3];
         return (
             <Box
                 sx={{
                     display: "flex",
                     justifyContent: "center",
                     paddingTop: 5,
+                    paddingBottom: 5,
                 }}>
                 <Card
                     sx={{
@@ -110,83 +112,111 @@ const UploadSection = () => {
                         backgroundColor: "rgba(255, 255, 255, 0.9)",
                     }}>
                     <CardContent>
-                        <Typography
-                            variant="h3"
-                            component="div"
-                            color={"#273339"}
-                            marginTop={2}>
-                            <b>{title}</b>
-                        </Typography>
+                        <Container>
+                            <Typography
+                                variant="h3"
+                                component="div"
+                                color={"#273339"}
+                                marginTop={2}
+                                marginBottom={2}>
+                                <b>{title}</b>
+                            </Typography>
+                        </Container>
 
-                        <Typography
-                            variant="h5"
-                            component="div"
-                            color={"#273339"}>
-                            <br />
-                            Causal Agent
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            component="div"
-                            color={"#273339"}>
-                            {casualAgent}
-                        </Typography>
+                        <Container>
+                            {imageNumbers.map((number) => (
+                                <img
+                                    key={number}
+                                    src={`./img/${title}/${number}.jpg`}
+                                    alt={`Depiction of disease ${number}`}
+                                    style={{
+                                        padding: "1px",
+                                        width: "33%",
+                                        height: "auto",
+                                    }}
+                                />
+                            ))}
+                        </Container>
 
-                        <Typography
-                            variant="h5"
-                            component="div"
-                            color={"#273339"}>
-                            <br />
-                            Distribution
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            component="div"
-                            color={"#273339"}>
-                            {distribution}
-                        </Typography>
+                        <Container sx={{ display: "flex" }}>
+                            <Typography
+                                variant="h5"
+                                component="div"
+                                color={"#273339"}
+                                width={"50%"}>
+                                <br />
+                                Causal Agent
+                                <br />
+                                {
+                                    <Typography
+                                        variant="body1"
+                                        component="div"
+                                        color={"#273339"}>
+                                        {casualAgent}
+                                    </Typography>
+                                }
+                            </Typography>
 
-                        <Typography
-                            variant="h5"
-                            component="div"
-                            color={"#273339"}>
-                            <br />
-                            Symptoms
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            component="div"
-                            color={"#273339"}>
-                            {symptoms}
-                        </Typography>
+                            <Typography
+                                variant="h5"
+                                component="div"
+                                color={"#273339"}>
+                                <br />
+                                Distribution
+                                <br />
+                                {
+                                    <Typography
+                                        variant="body1"
+                                        component="div"
+                                        color={"#273339"}>
+                                        {distribution}
+                                    </Typography>
+                                }
+                            </Typography>
+                        </Container>
+                        <Container>
+                            <Typography
+                                variant="h5"
+                                component="div"
+                                color={"#273339"}>
+                                <br />
+                                Symptoms
+                            </Typography>
+                            <Typography
+                                variant="body1"
+                                component="div"
+                                color={"#273339"}>
+                                {symptoms}
+                            </Typography>
 
-                        <Typography
-                            variant="h5"
-                            component="div"
-                            color={"#273339"}>
-                            <br />
-                            Conditions for Development
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            component="div"
-                            color={"#273339"}>
-                            {conditions}
-                        </Typography>
+                            <Typography
+                                variant="h5"
+                                component="div"
+                                color={"#273339"}>
+                                <br />
+                                Conditions for Development
+                            </Typography>
+                            <Typography
+                                variant="body1"
+                                component="div"
+                                color={"#273339"}>
+                                {conditions}
+                            </Typography>
 
-                        <Typography
-                            variant="h5"
-                            component="div"
-                            color={"#273339"}>
-                            <br />
-                            Control
-                        </Typography>
-                        <Typography
-                            variant="body1"
-                            component="div"
-                            color={"#273339"}>
-                            {control}
-                        </Typography>
+                            <Typography
+                                variant="h5"
+                                component="div"
+                                color={"#273339"}>
+                                <br />
+                                Control
+                            </Typography>
+                            <Typography
+                                variant="body1"
+                                component="div"
+                                color={"#273339"}>
+                                {control}
+                            </Typography>
+                        </Container>
                     </CardContent>
                     <CardActions>
                         <Button

@@ -22,13 +22,14 @@ const NavBar = () => {
                         />
 
                         {/*<img
-                    src={`${process.env.PUBLIC_URL}/img/tomatologo.png`}
-                    alt="Logo"
-                    sx={{
-                        width: "100px",
-                        height: "auto"
-                    }}
-                />*/}
+                            src={"./img/tomatologo.png"}
+                            alt="Logo"
+                            width= "90px"
+                            height= "auto"
+                            sx={{
+                            }}
+                        />*/}
+                        
                         <Typography
                             sx={{
                                 fontSize: 16,

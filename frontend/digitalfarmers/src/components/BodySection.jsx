@@ -12,7 +12,7 @@ const BodySection = () => {
                     backgroundRepeat: "no-repeat",
                     backgroundAttachment: "fixed",
                     backgroundSize: "cover",
-                    height: "100vh",
+                    minHeight: "100vh",
                 }}>
                     <UploadSection/>
                 </div>
