@@ -1,7 +1,34 @@
 import CircleIcon from "@mui/icons-material/Circle";
-import { AppBar, Toolbar, Typography, Box, Button } from "@mui/material";
+import React, { useState } from "react";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import {
+    AppBar,
+    Toolbar,
+    Typography,
+    Box,
+    Button,
+    IconButton,
+    Menu,
+    MenuItem,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const NavBar = () => {
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl);
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar
@@ -21,15 +48,6 @@ const NavBar = () => {
                             }}
                         />
 
-                        {/*<img
-                            src={"./img/tomatologo.png"}
-                            alt="Logo"
-                            width= "90px"
-                            height= "auto"
-                            sx={{
-                            }}
-                        />*/}
-                        
                         <Typography
                             sx={{
                                 fontSize: 16,
