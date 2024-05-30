@@ -1,7 +1,7 @@
-import CircleIcon from "@mui/icons-material/Circle";
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import CircleIcon from "@mui/icons-material/Circle";
 import {
     AppBar,
     Toolbar,
@@ -35,8 +35,8 @@ const NavBar = () => {
                 sx={{
                     position: "relative",
                     backgroundColor: "#273339",
-                    paddingLeft: "75px",
-                    paddingRight: "75px",
+                    paddingLeft: "10%",
+                    paddingRight: "10%",
                 }}>
                 <Toolbar>
                     <>
@@ -47,7 +47,6 @@ const NavBar = () => {
                                 color: "#e34234",
                             }}
                         />
-
                         <Typography
                             sx={{
                                 fontSize: 16,
@@ -60,54 +59,129 @@ const NavBar = () => {
                             Farmers
                         </Typography>
                     </>
-                    <a
-                        href="http://localhost:3000/"
-                        target="_self"
-                        rel="noopener noreferrer">
-                        <Button
-                            sx={{
-                                variant: "text",
-                                fontSize: 16,
-                                color: "white",
-                                "&:hover": {
-                                    color: "#9BD2A5",
-                                },
-                            }}>
-                            Home
-                        </Button>
-                    </a>
-                    <a
-                        href="https://colossal-seed-831.notion.site/Digital-Farmers-Harvesting-Insights-to-Tackle-Leaf-Diseases-e78b023b99d84863bfa487a362138d6e"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <Button
-                            sx={{
-                                variant: "text",
-                                fontSize: 16,
-                                color: "white",
-                                "&:hover": {
-                                    color: "#9BD2A5",
-                                },
-                            }}>
-                            Development
-                        </Button>
-                    </a>
-                    <a
-                        href="https://github.com/BabaRiri"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        <Button
-                            sx={{
-                                variant: "text",
-                                fontSize: 16,
-                                color: "white",
-                                "&:hover": {
-                                    color: "#9BD2A5",
-                                },
-                            }}>
-                            Contact
-                        </Button>
-                    </a>
+                    {isMobile ? (
+                        <>
+                            <IconButton
+                                size="large"
+                                edge="start"
+                                color="inherit"
+                                aria-label="menu"
+                                sx={{ mr: 2 }}
+                                onClick={handleMenu}>
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorEl}
+                                anchorOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: "top",
+                                    horizontal: "right",
+                                }}
+                                open={open}
+                                onClose={handleClose}>
+                                <a
+                                    href="http://localhost:3000/"
+                                    target="_self"
+                                    rel="noopener noreferrer"
+                                    style={{ textDecoration: "none" }}>
+                                    <MenuItem
+                                        onClick={handleClose}
+                                        sx={{
+                                            variant: "text",
+                                            fontSize: 16,
+                                            color: "#273339",
+                                        }}>
+                                        Home
+                                    </MenuItem>
+                                </a>
+                                <a
+                                    href="https://colossal-seed-831.notion.site/Digital-Farmers-Harvesting-Insights-to-Tackle-Leaf-Diseases-e78b023b99d84863bfa487a362138d6e"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ textDecoration: "none" }}>
+                                    <MenuItem
+                                        onClick={handleClose}
+                                        sx={{
+                                            variant: "text",
+                                            fontSize: 16,
+                                            color: "#273339",
+                                        }}>
+                                        Development
+                                    </MenuItem>
+                                </a>
+                                <a
+                                    href="https://github.com/BabaRiri"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{ textDecoration: "none" }}>
+                                    <MenuItem
+                                        sx={{
+                                            variant: "text",
+                                            fontSize: 16,
+                                            color: "#273339",
+                                        }}>
+                                        Contact
+                                    </MenuItem>
+                                </a>
+                            </Menu>
+                        </>
+                    ) : (
+                        <>
+                            <a
+                                href="http://localhost:3000/"
+                                target="_self"
+                                rel="noopener noreferrer">
+                                <Button
+                                    sx={{
+                                        variant: "text",
+                                        fontSize: 16,
+                                        color: "white",
+                                        "&:hover": {
+                                            color: "#9BD2A5",
+                                        },
+                                    }}>
+                                    Home
+                                </Button>
+                            </a>
+                            <a
+                                href="https://colossal-seed-831.notion.site/Digital-Farmers-Harvesting-Insights-to-Tackle-Leaf-Diseases-e78b023b99d84863bfa487a362138d6e"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                <Button
+                                    sx={{
+                                        variant: "text",
+                                        fontSize: 16,
+                                        color: "white",
+                                        "&:hover": {
+                                            color: "#9BD2A5",
+                                        },
+                                    }}>
+                                    Development
+                                </Button>
+                            </a>
+                            <a
+                                href="https://github.com/BabaRiri"
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                <Button
+                                    sx={{
+                                        variant: "text",
+                                        fontSize: 16,
+                                        color: "white",
+                                        "&:hover": {
+                                            color: "#9BD2A5",
+                                        },
+                                    }}>
+                                    Contact
+                                </Button>
+                            </a>
+                        </>
+                    )}
                 </Toolbar>
             </AppBar>
         </Box>
